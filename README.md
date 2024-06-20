@@ -12,6 +12,6 @@ MYSQL
 NODEJS
 EXPRESS JS
 # features:-
-certificate is download able
-navigatable navbar
+certificate is downloadable,
+navigateble navbar,
 data will be saved in mysql database
