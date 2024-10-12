@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/images/Logo.png" type="image/x-icon">
+        <!-- Optional for modern browsers using a PNG logo -->
+        <link rel="icon" href="/images/Logo.png" type="image/png">
+     <title>Portfolio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+        *{
+    margin:0;
+    padding:0;
+    font-family:'poppins',sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+body{
+    background: #080808;
+    color:#fff;
+}
+ #header{
+    width:100%;
+height:120vh;
+background-size: cover;
+background-position: center;
+
+}
+.image{
+    background-image: url(images/background3.png);
+}
+.container{
+    padding:10px 10%;
+}
+
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo{
+    width:140px;
+    opacity: 0;
+    animation:slideTop 1s ease forwards;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin:10px 20px;
+}
+nav ul li a{
+    color:#fff;
+    text-decoration: none;
+    font-size:18px;
+    position: relative;
+opacity: 0;
+animation:slideTop .5s ease forwards;
+animation-delay:calc(.2s*var(--i));
+}
+nav ul li a::after{
+    content: ' ';
+    width:0%;
+    height:3px;
+     /*background: #21f0a9;*/
+     background: linear-gradient(90deg, blue 0%, pink 50%, red 100%);
+     /*background: linear-gradient(90deg, blue 0%, pink 25%, red 50%, green 75%, orange 100%);*/
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    transition:0.5s;
+}
+nav ul li a:hover::after{
+    width:100%;
+}
+.header-text{
+    display:flex;
+    justify-content:space-around;
+    margin:70px 0;
+    align-items:center;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: .7s;
+}
+.leftsection{
+    font-size:3rem;
+    margin:20px 0;
+    margin-left:150px;
+    margin-bottom:280px;
+    position:relative;
+  right:300px;
+}
+.header-text div{
+    width:30%;
+}
+.purple{
+    color:#FFA500;
+    
+}
+#element{
+    color:#FFA500;
+}
+
+#about {
+    padding: 80px 0;
+    color: #ababab;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1 {
+    flex-basis: 35%;
+}
+
+.about-col-1 img {
+    width: 100%;
+    border-radius: 60%;
+    box-shadow: 0 0 50px 20px #FFA500;
+    opacity: 0;
+    animation:zoomIn 1s ease forwards;
+    animation-delay: 2.1s;
+}
+
+.about-col-2 {
+    flex-basis: 60%;
+}
+
+.sub-title {
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.tab-titles {
+    display: flex;
+    margin: 20px 0 40px;
+   
+}
+
+.tab-links {
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-links::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #FFA500;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after {
+    width: 50%;
+}
+
+.tab-contents ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.tab-contents ul li span {
+    color: #b54769;
+    font-size: 14px;
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
+}
+
+#services {
+    padding: 30px 0;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.services-list div {
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-right: 5px solid #fff; /* Specify border style, color, and width */
+    transition: background 0.5s, transform 0.5s;
+}
+
+.services-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.services-list div h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.services-list div a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.services-list div:hover{
+    background: #FFA500;
+    transform:translateY(-10px);
+}
+#portfolio {
+    padding: 50px 0;
+}
+
+.work-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.work {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.work img {
+    width: 100%; /* Fixed the width value */
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.layer {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #FFA500);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+
+.layer h3 {
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #fff; /* Added text color for better visibility */
+}
+
+.layer a {
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #FFA500;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block; /* Added display property */
+}
+
+.work:hover img {
+    transform: scale(1.1); /* Fixed the scale value */
+}
+
+.work:hover .layer {
+    height: 100%;
+}
+
+.btn {
+    display:block; /* Change display to inline-block for better fitting */
+    margin: 50px auto; /* Center the button horizontally */
+    padding: 14px 50px; /* Adjust padding */
+    border: 1px solid #FFA500; /* Add border */
+    border-radius: 6px; /* Add border-radius */
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.5s; 
+    width:fit-content;/* Add transition effect */
+}
+
+.btn:hover {
+    background: #FFA500; /* Change background color on hover */
+}
+.custom-button {
+            width: 100px;
+            background-image: linear-gradient(to bottom right, rgb(198, 19, 141), rgb(13, 140, 199));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 45px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect */
+        .custom-button:hover {
+            background-image: linear-gradient(to bottom right, rgb(148, 9, 105), rgb(10, 98, 147));
+        }
+
+.contact-left {
+    flex-basis: 35%;
+}
+
+.contact-right {
+    flex-basis: 60%;
+}
+
+.contact-left p {
+    margin-top: 30px;
+}
+
+.contact-left p i {
+    color: #FFA500;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.social-icons {
+    margin-top: 30px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+
+.social-icons a:hover {
+    color: #FFA500;
+    transform: translateX(-5px); /* Changed translate to translateX for horizontal movement */
+}
+
+.btn.btn2 {
+    display: inline-block;
+    background: #FFA500;
+}
+.btn.btn2:hover{
+color:#6c0626;
+}
+.contact-right form {
+    width: 100%;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+form .btn2 {
+    padding: 14px 60px; /* Corrected class selector to .btn2 */
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.copyright i {
+    color: #FFA500;
+}
+
+nav .fas {
+    display: none;
+}
+.range-wrapper {
+  width: 50%; /* Adjust the width as needed */
+}
+.language {
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+.TechnicalSkills{
+    width:200%;
+    max-width:600px;
+    padding:0 20px;
+}
+.TechnicalSkills-name{
+    font-size: 18px;
+    font-weight:700;
+    color:#f1f1f1;
+    text-transform: uppercase;
+    margin:20px 0;
+}
+.TechnicalSkills-bar{
+    height:14px;
+    background: #282828;
+    border-radius: 3px;
+}
+.TechnicalSkills-per{
+    height:14px;
+    background: #d13639;
+    border-radius: 3px;
+    position: relative;
+    animation: fillBars 2.5s 1;
+}
+
+.TechnicalSkills-per::before{
+    content:attr(per);
+    position:absolute;
+    padding:4px 6px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    font-size: 12px;
+    top:-35px;
+    right: 0;
+    transform: translateX(50%);
+    color:black;
+}
+.TechnicalSkills-per::after{
+    content:"";
+    position:absolute;
+   height: 10px;
+   width: 10px;
+    background: #f1f1f1;
+    border-radius: 2px;
+ 
+    top:-20px;
+    right: 0;
+    transform: translateX(50%) rotate(45deg);
+}
+.language {
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+.container2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+button{
+    background-color: #FFA500;
+    color:black;
+}
+.container2 .card {
+    position: relative;
+    width: 220px;
+    height: 250px;
+    background: #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container2 .card .percent {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.container2 .card .percent svg {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform: rotate(270deg);
+}
+
+.container2 .card .percent svg circle {
+    width: 100%;
+    height: 100%;
+    fill: transparent;
+    stroke-width: 2;
+    stroke: #191919;
+    transform: translate(5px, 5px);
+}
+
+.container2 .card .percent svg circle:nth-child(2) {
+    stroke-dasharray: 440;
+    stroke-dashoffset: calc(440 - (440 * var(--num)) / 100);
+    stroke: transparent; /* Start with transparent color */
+    animation: fadeIn 1s linear forwards, colorFill 2s linear forwards;
+    animation-delay: 2.5s;
+}
+
+
+.section-title {
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 80px;
+}
+
+.achievement {
+    background-color: black;
+    padding: 20px;
+    margin-bottom: 80px;
+    border-radius: 5px;
+    box-shadow: 0 0 50px 20px #FFA500;
+    opacity: 0;
+    animation:zoomIn 1s ease forwards;
+    animation-delay: 2.1s;
+}
+
+.achievement h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.achievement p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
+@keyframes colorFill {
+    0% {
+        stroke: transparent; /* Start with transparent color */
+    }
+    100% {
+        stroke: var(--clr); /* Fully fill with color */
+    }
+}
+
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.dot {
+    position: absolute;
+    inset: 5px;
+    z-index: 10;
+    transform: rotate(calc(3.6deg * var(--num)));
+    animation: animateDot 2s linear forwards;
+}
+
+@keyframes animateDot {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(calc(3.6deg * var(--num)));
+    }
+}
+
+.dot::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr);
+}
+
+.number{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 2.5s;
+}
+.number h2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    font-weight:700;
+    font-size: 2.5em;
+}
+.number h2 span{
+    font-weight: 300;
+    color:#fff;
+    font-size: 0.5em;
+}
+.number p{
+    font-weight: 300;
+    font-size: 0.75em;
+  letter-spacing: 2px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    color:rgba(255,255,255,0.75);
+}
+
+@keyframes fillBars{
+    from{
+        width:0;
+    }
+    to{
+        width: 100%;
+    }
+}
+@keyframes slideTop{
+    0%{
+        opacity:0;
+        transform:translateY(100px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateY(0);
+    }
+}
+@keyframes slideRight{
+    0%{
+        opacity:0;
+        transform:translateX(-100px);
+    }
+    100%{
+        opacity: 1;
+        transform:translateX(0);
+    }
+}
+@keyframes zoomIn{
+    0%{
+        opacity: 0;
+        transform:scale(0.5);
+    }
+    100%{
+        opacity: 1;
+        transform:scale(1);
+    }
+}
+@media only screen and (max-width: 600px) {
+   
+    .logo {
+    position: relative;
+    top: 90px;
+    left:100px;
+     /* Adjust as needed */
+    max-width: 100px; /* Adjust max-width as needed */
+    height: auto;
+}
+
+    #header {
+    background-image: url(images/phone.jpg);
+    height: 100vh;
+    width:200vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-text {
+    font-size:16px;
+    width:900px;
+    word-wrap: break-word;
+    position: relative;
+    left:50px;
+    top:160px;
+}
+
+.leftsection {
+    font-size: 16px;
+    height: auto;
+    
+    word-wrap: keep-all;
+}
+
+#element {
+    font-size: 16px;
+    display: block;
+    margin-top: 20px;
+   
+    word-wrap: break-word;
+}
+
+
+
+  
+  nav .fas {
+    display: block;
+    font-size: 25px;
+    position: relative;
+    top:60px;
+    right:300px;
+  }
+  
+  nav ul {
+    background: #ff004f;
+   
+    position: fixed;
+    top: 0px;
+    right:-200px;
+    width: 200px;
+    height: 100vh;
+    padding-top: 50px;
+    z-index: 2;
+    transition: right 0.5s;
+  }
+  
+  nav ul li {
+    display: block;
+    margin: 25px;
+  }
+  
+  nav ul .fas {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+  
+  .sub-title {
+    font-size: 40px;
+  }
+ 
+
+
+.about-col-1,
+  .about-col-2 {
+    flex-basis: 100%;
+  }
+  
+  .about-col-1 {
+    margin-bottom: 30px;
+  }
+  
+  .about-col-2 {
+    font-size: 14px;
+  }
+  
+  .tab-links {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  
+  .contact-left,
+  .contact-right {
+    flex-basis: 100%;
+  }
+  
+  .copyright {
+    font-size: 14px;
+  }
+}
+.work-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap if the container is too small */
+    justify-content: center; /* Centers the work items horizontally */
+}
+
+.work {
+    position: relative; /* Helps to position the .layer absolutely */
+    margin: 15px; /* Space between work items */
+    overflow: hidden; /* Hides anything that exceeds the boundaries of the work item */
+}
+
+.work img {
+    width: 100%; /* Makes the image responsive */
+    height: auto; /* Maintains aspect ratio */
+}
+
+.work {
+    position: relative; /* Helps to position the .layer absolutely */
+    margin: 15px; /* Space between work items */
+    overflow: hidden; /* Hides anything that exceeds the boundaries of the work item */
+}
+
+.work img {
+    width: 100%; /* Makes the image responsive */
+    height: auto; /* Maintains aspect ratio */
+}
+
+.layer {
+    position: absolute; /* Overlay on the image */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20%; /* or height: 80%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers items vertically */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
+    color: white; /* Text color */
+    padding: 20px; /* Padding for inner content */
+    text-align: center; /* Center text */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.layer:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Darken on hover */
+}
+
+.layer p {
+    margin: 10px 0; /* Space between paragraphs */
+}
+
+.layer .links {
+    display: flex; /* Flexbox for horizontal alignment */
+    justify-content: center; /* Centers links */
+    margin-top: 10px; /* Space above the links */
+}
+
+.layer a {
+    margin: 0 10px; /* Space between the icons */
+    color: white; /* Icon color */
+    font-size: 24px; /* Icon size */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.layer a:hover {
+    color: #ffcc00; /* Change color on hover */
+}
+
+ </style>
+</head>
+<body>
+    <form action="/details" method="post">
+        <!--header-->
+    <div id="header">
+        <div class="image" style="height: 435px; width: 435px; position: absolute;bottom:50px; right:280px; display: flex; align-items: center;">
+        </div>
+        
+        <div class="container">
+            <nav>
+                <img src="images/Aishwarya.png" class="logo">
+                <ul id="sidemenu">
+                  
+                    <li><a href="#header" style="--i:1;">Home</a></li>
+                    <li><a href="#about" style="--i:2;">About</a></li>
+                    <li><a href="#Certificate"style="--i:3;">Certificate</a></li>
+                    <li><a href="#achievements"style="--i:5;">Achievements</a></li>
+                    <li><a href="#contact"style="--i:5;">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+                
+            </nav>
+            <!--home-->
+            <div class="header-text">
+                <div class="leftsection">
+                    Hi, My Name is <span class="purple">Aishwarya Rana</span> From India.
+                    <div>  I am a Passionate</div>
+                  <span id="element"></span>
+                    
+                   </div>
+        </div>
+        </div>
+    </div>
+   <!--about-->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/background.jpg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About me</h1>
+                    <p> Hi, I am Aishwarya Rana from Jamshedpur, Jharkhand. I am a dedicated and enthusiastic individual with strong technical and communication skills. I have gained solid experience in Java Data Structures & Algorithms (DSA) and full-stack development using the MERN (MongoDB, Express.js, React, Node.js) stack. I have completed several projects that showcase my ability to develop efficient and scalable applications.
+
+                        I possess excellent problem-solving abilities and can work both independently and as part of a team. I have also interned at SEMS Welfare Foundation, where I contributed to various initiatives, further enhancing my teamwork and project management skills. I am adaptable, reliable, and always open to learning new technologies to meet the challenges of a fast-paced environment.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('Soft Skills')">Skills</p>
+                        <p class="tab-links"onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links"onclick="opentab('education')">Education</p>
+                        <p class="tab-links"onclick="opentab('Technical Skills')">Technical Skills</p>
+                        <p class="tab-links"onclick="opentab('Web Framework')">Web Framework</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="Soft Skills">
+                        <ul>
+                            <li>
+                                <span>Ms Excel</span><br> Formulas , Charts, Graph,Tables.
+                            </li>
+                            <li>
+                                <span>Ms Word</span><br>Creating word documents.Text formatting,
+                                Inserting images and bookmarks,Create graphs and charts.
+                            </li>
+                            <li>
+                                <span>Communication</span><br>Very attentive in listening to the query and knowing the good way of speaking and communicating
+                            </li>
+                            <li>
+                                <span>Decision making</span><br>I am able to tackle all the problem calmly and making a good solution to the problem.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li>
+                                <span>Web Developer Internship </span><br> In this Internship i have used Wordpress for Developing Websites  :- June 2024 - August 2024
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li>
+                                <span>Srinath University,Jamshedpur.</span><br> BCA:-2022-2025 
+                            </li>
+                            <li>
+                                <span>Kerala public school,Kadma.</span><br> Class XII:-2020-2022.
+                            </li>
+                            <li>
+                                <span>Kerala Public school,Kadma.</span><br> Class X:-2018-2020. 
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="Technical Skills">
+                        <ul>
+                            <li>
+                                <span>java</span><br>
+                            </li>
+                            <li>
+                                <span>MongoDB</span><br>
+                            </li>
+                            <li>
+                                <span>Git </span><br>
+                            </li>
+                            <li>
+                                <span>Github</span><br>
+                            </li>
+                            <li>
+                                <span>HTML</span><br>
+                            </li>
+                            <li>
+                                <span>CSS</span><br>
+                            </li>
+                            <li>
+                                <span>JavaScript</span><br>
+                            </li>
+                            <li>
+                                <span>Python</span><br>
+                            </li>
+                           
+                            <li>
+                                <span>Sql</span><br> 
+                            </li>
+                           
+                          
+                            <li>
+                                <span>c/c++</span><br>
+                            </li>
+                            <li>
+                                <span>Asp.net</span><br>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="Web Framework">
+                        <ul>
+                            <li>
+                                <span>Node.js</span><br> web Framework
+                            </li>
+                            <li>
+                                <span>Express.js</span><br> web Framework
+                            </li>
+                            <li>
+                                <span>React.js</span><br>Web Framework
+                            </li>
+                            <li>
+                                <span>Bootstrap</span><br>Web Framework
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--softskills-->
+    <div class="container">
+        <label for="language" class="language" style="margin-bottom: 10px; display: block;">Soft Skills</label>
+    
+        <div id="Skills">
+            <div class="range-wrapper"> 
+                <div class="TechnicalSkills">
+                    <div class="TechnicalSkills-name">Ms-Excel</div>
+                    <div class="TechnicalSkills-bar">
+                        <div class="TechnicalSkills-per" per="40%" style="max-width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+   
+            <div class="range-wrapper">
+                <div class="TechnicalSkills">
+                    <div class="TechnicalSkills-name">Ms-Word</div>
+                    <div class="TechnicalSkills-bar">
+                        <div class="TechnicalSkills-per" per="70%" style="max-width:90%"></div>
+                    </div>
+                </div>
+            </div>
+    
+          
+    
+            <div class="range-wrapper"> 
+                <div class="TechnicalSkills">
+                    <div class="TechnicalSkills-name">Communication</div>
+                    <div class="TechnicalSkills-bar">
+                        <div class="TechnicalSkills-per" per="90%" style="max-width:90%"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="range-wrapper"> 
+                <div class="TechnicalSkills">
+                    <div class="TechnicalSkills-name">Descision Making</div>
+                    <div class="TechnicalSkills-bar">
+                        <div class="TechnicalSkills-per" per="60%" style="max-width:90%"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+      </div>
+       <!--technical skills-->
+      <div class="container">
+      <label for="language" class="language" style="margin-bottom: 10px; display: block;">Technical Skills</label>
+      <div id="TechSkills">
+        <div class="container2" style="margin-top:40px;">
+            
+        <div class="card" >
+        <div class="percent" style="--clr:#FFA500;--num:70;">
+            <div class="dot"></div>
+<svg>
+    <circle cx="70" cy="70" r="70"></circle>
+    <circle cx="70" cy="70" r="70"></circle>
+</svg>
+<div class="number">
+    <h2>80<span>%</span></h2>
+    <p>Java</p>
+</div>
+        </div>
+        </div>
+        <div class="card">
+            <div class="percent" style="--clr:#FFA500;--num:90;">
+                <div class="dot"></div>
+    <svg>
+        <circle cx="70" cy="70" r="70"></circle>
+        <circle cx="70" cy="70" r="70"></circle>
+    </svg>
+    <div class="number">
+        <h2>90<span>%</span></h2>
+        <p>Html</p>
+    </div>
+            </div>
+            </div>
+            <div class="card">
+                <div class="percent" style="--clr:#FFA500;--num:90;">
+                    <div class="dot"></div>
+        <svg>
+            <circle cx="70" cy="70" r="70"></circle>
+            <circle cx="70" cy="70" r="70"></circle>
+        </svg>
+        <div class="number">
+            <h2>90<span>%</span></h2>
+            <p>Css</p>
+        </div>
+                </div>
+                </div>
+       
+                <div class="card">
+                    <div class="percent" style="--clr:#FFA500;--num:60;">
+                        <div class="dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70"></circle>
+            </svg>
+            <div class="number">
+                <h2>60<span>%</span></h2>
+                <p>JavaScricpt</p>
+            </div>
+                    </div>
+                    </div>
+       
+                    <div class="card">
+                        <div class="percent" style="--clr:#FFA500;--num:40;">
+                            <div class="dot"></div>
+                <svg>
+                    <circle cx="70" cy="70" r="70"></circle>
+                    <circle cx="70" cy="70" r="70"></circle>
+                </svg>
+                <div class="number">
+                    <h2>40<span>%</span></h2>
+                    <p>Python</p>
+                </div>
+                        </div>
+                        </div>
+       
+                        <div class="card">
+                            <div class="percent" style="--clr:#FFA500;--num:40;">
+                                <div class="dot"></div>
+                    <svg>
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                    </svg>
+                    <div class="number">
+                        <h2>40<span>%</span></h2>
+                        <p>Sql</p>
+                    </div>
+                            </div>
+                            </div>
+       
+                            <div class="card">
+                                <div class="percent" style="--clr:#FFA500;--num:50;">
+                                    <div class="dot"></div>
+                        <svg>
+                            <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70"></circle>
+                        </svg>
+                        <div class="number">
+                            <h2>50<span>%</span></h2>
+                            <p>C/C++</p>
+                        </div>
+                                </div>
+                                </div>
+       
+                                <div class="card">
+                                    <div class="percent" style="--clr:#FFA500;--num:90;">
+                                        <div class="dot"></div>
+                            <svg>
+                                <circle cx="70" cy="70" r="70"></circle>
+                                <circle cx="70" cy="70" r="70"></circle>
+                            </svg>
+                            <div class="number">
+                                <h2>20<span>%</span></h2>
+                                <p>Asp.net</p>
+                            </div>
+                                    </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="percent" style="--clr:#FFA500;--num:20;">
+                                            <div class="dot"></div>
+                                <svg>
+                                    <circle cx="70" cy="70" r="70"></circle>
+                                    <circle cx="70" cy="70" r="70"></circle>
+                                </svg>
+                                <div class="number">
+                                    <h2>80<span>%</span></h2>
+                                    <p>Node.js</p>
+                                </div>
+                                        </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="percent" style="--clr:#FFA500;--num:20;">
+                                                <div class="dot"></div>
+                                    <svg>
+                                        <circle cx="70" cy="70" r="70"></circle>
+                                        <circle cx="70" cy="70" r="70"></circle>
+                                    </svg>
+                                    
+                                    <div class="number">
+                                        <h2>80<span>%</span></h2>
+                                        <p>React.js</p>
+                                    </div>
+                                            </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="percent" style="--clr:#FFA500;--num:90;">
+                                                    <div class="dot"></div>
+                                        <svg>
+                                            <circle cx="70" cy="70" r="70"></circle>
+                                            <circle cx="70" cy="70" r="70"></circle>
+                                        </svg>
+                                        <div class="number">
+                                            <h2>90<span>%</span></h2>
+                                            <p>Bootstrap</p>
+                                        </div>
+                                                </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="percent" style="--clr:#FFA500;--num:90;">
+                                                        <div class="dot"></div>
+                                            <svg>
+                                                <circle cx="70" cy="70" r="70"></circle>
+                                                <circle cx="70" cy="70" r="70"></circle>
+                                            </svg>
+                                            <div class="number">
+                                                <h2>90<span>%</span></h2>
+                                                <p>Git</p>
+                                            </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="percent" style="--clr:#FFA500;--num:90;">
+                                                            <div class="dot"></div>
+                                                <svg>
+                                                    <circle cx="70" cy="70" r="70"></circle>
+                                                    <circle cx="70" cy="70" r="70"></circle>
+                                                </svg>
+                                                <div class="number">
+                                                    <h2>90<span>%</span></h2>
+                                                    <p>Github</p>
+                                                </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="card">
+                                                            <div class="percent" style="--clr:#FFA500;--num:90;">
+                                                                <div class="dot"></div>
+                                                    <svg>
+                                                        <circle cx="70" cy="70" r="70"></circle>
+                                                        <circle cx="70" cy="70" r="70"></circle>
+                                                    </svg>
+                                                    <div class="number">
+                                                        <h2>90<span>%</span></h2>
+                                                        <p>MongoDB</p>
+                                                    </div>
+                                                            </div>
+                                                            </div>
+   </div>
+    </div>
+     </div>
+<!--certificate-->
+    <div id="Certificate">
+        <div class="container">
+            <h1 class="sub-title">My Certificate</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-brands fa-java"></i>
+                    <h2>OOPS in Java</h2>
+                    <p>Object-Oriented Programming (OOP) in Java is a paradigm that organizes code around objects and classes, focusing on encapsulation, inheritance, polymorphism, and abstraction to promote modular, reusable, and maintainable code. It models real-world entities, allowing for better code organization and flexibility. </p>
+                    <a href='https://en.wikipedia.org/wiki/Object-oriented_programming'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='/images/oops.png'">View certificate</button>
+
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-person"></i>
+                    <h2>Guvi Hackathon</h2>
+                    <p>Bitcoin is a form of digital currency that uses blockchain technology to support transactions between users on a decentralized network. </p>
+                    <a href='https://en.wikipedia.org/wiki/Hackathon'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='/images/Guvi hackathon certificate.png'">View certificate</button>
+
+                </div>
+                <div>
+                    <i class="fa-brands fa-github"></i>
+                    <h2> Git & Github </h2>
+                    <p>GitHub facilitates collaboration among developers. It also provides distributed version control. Teams of developers can work together in a centralized Git repository and track changes as they go to stay organized. </p>
+                    <a href='https://en.wikipedia.org/wiki/GitHub'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='/images/git.png'">View certificate</button>
+
+                </div>
+                <div>
+                    <i class="fa-brands fa-java"></i>
+                    <h2>Java Data Structure and algorithms</h2>
+                    <p>Java is a multi-platform, object-oriented, and network-centric language that can be used as a platform in itself. It is a fast, secure, reliable programming language for coding everything from mobile apps and enterprise software to big data applications and server-side technologies.</p>
+                    <a href='https://en.wikipedia.org/wiki/Java_(programming_language)'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_0138419597266862088388_shared/1-ef652464-8699-4dac-996d-4cf4672929ec.pdf'">View certificate</button>
+
+                </div>
+                <div>
+                    <i class="fa-brands fa-microsoft"></i>
+                    <h2>Infosys Microsoft Azure</h2>
+                    <p>Azure is a public cloud computing platform—with solutions including Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS) that can be used for services such as analytics, virtual computing, storage, networking, and much more..</p>
+                    <a href='https://www.geeksforgeeks.org/microsoft Azure/'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_01384265603288268819987_shared/1-e461fa81-fc12-4afe-a8a3-c356d0d963e5.pdf'">View certificate</button>
+
+                </div>
+                <div>
+                    <i class="fa-solid fa-brain"></i>
+                    <h2>The Ultimate Guide to learn Sql from scratch[2022 Edition].</h2>
+                    <p>SQL stands for Structured Query Language
+                        SQL lets you access and manipulate databases
+                        SQL became a standard of the American National Standards Institute (ANSI) in 1986, and of the International Organization for Standardization (ISO) in 1987</p>
+                    <a href='https://www.techtarget.com/searchenterpriseai/definition/sql'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='https://udemy-certificate.s3.amazonaws.com/image/UC-6c2295c7-8d6b-4dae-a7dd-684648acc476.jpg'">View certificate</button>
+
+                    </div>
+                       
+                <div>
+                    <i class="fa-sharp fa-regular fa-globe"></i>
+                    <h2>Fundamentals of Network Security</h2>
+                    <p>Information security is important because it helps to protect information from being accessed by unauthorized individuals. There are four main principles of information security: confidentiality, integrity, availability, and non-repudiation.</p>
+                    <a href='https://www.geeksforgeeks.org/network-security/'>learn more</a></br>
+                    <button class="custom-button" onclick="window.location.href='https://udemy-certificate.s3.amazonaws.com/image/UC-e33e7c08-7ba7-4d8a-a14a-7a82be0b9b6b.jpg'">View certificate</button>
+
+                </div>
+        
+<div>
+    <i class="fa-brands fa-bitcoin"></i>
+    <h2>Bitcoin</h2>
+    <p>Bitcoin is a form of digital currency that uses blockchain technology to support transactions between users on a decentralized network.</p>
+    <a href='https://en.wikipedia.org/wiki/Bitcoin'>learn more</a></br>
+    <button class="custom-button" onclick="window.location.href='https://udemy-certificate.s3.amazonaws.com/image/UC-fe66aa21-6f0e-41b9-a8b8-8b8e11188744.jpg'">View certificate</button>
+</div> 
+
+              
+            </div>
+        </div>
+    </div>
+ 
+      
+<!--project-->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work-1.jpg" style="height: 300px;">
+<div class="layer">
+    <h3> ShopEase</h3>
+    <p>My Own E-commerce designed Website</br> For more details visit by Github account.</p>
+    <a href="https://github.com/Aishwarya2004Github/ShopEase" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+    <p>ShopEase</br> For more details visit my Website.</p>
+    <a href="https://shopease-k5s6.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+</div>
+                </div>
+                <div class="work">
+                    <img src="images/work-2.png" style="height: 300px;">
+                    <div class="layer">
+                        <h3> INFINITY</h3>
+                        <p> Chat-App</br> For more details visit by Github account.</p>
+                        <a href="https://github.com/Aishwarya2004Github/INFINITY" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        <p>Chat-App</br> For more details visit my Website.</p>
+                        <a href="https://infinity-1yed.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.jpg" style="height: 300px;">
+                    <div class="layer">
+                        <h3> Business-Top</h3>
+                        <p>A Platform to increase your business through post for Promotion</br> For more details visit by Github account.</p>
+                        <a href="https://github.com/Aishwarya2004Github/Business-Top" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        <p>Business-Top</br> For more details visit my Website.</p>
+                        <a href="https://business-top.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-4.avif" style="height: 300px;">
+                    <div class="layer">
+                        <h3>KeyVista</h3>
+                        <p>Posting of the Property for sale and purchase</br> For more details visit by Github account.</p>
+                        <a href="https://github.com/Aishwarya2004Github/KeyVista" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        <p>KeyVista</br> For more details visit my Website</p>
+                        <a href="https://keyvista.onrender.com" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                       
+                    </div>
+                </div>
+            </div>
+<a href="https://github.com/Aishwarya2004Github" class="btn" style="text-align: center;">see more</a>
+        </div>
+    </div>
+    <!--achievements-->
+    <section id="achievements" class="section">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="achievement">
+                        <h3>Infosys SpringBoard- Ace</h3>
+                        <p>I have got this on completing 25 Quizzes on April 4 2024</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="achievement">
+                        <h3>Infosys SpringBoard - Warrior</h3>
+                        <p>Badge for completing first course awarded on april 4 2024</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="achievement">
+                        <h3>Leetcode </h3>
+                        <p>50 Days Badge</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!--contact-->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">contact me</h1>
+                    <p><i class="fa-solid fa-envelope"></i>rana.aishwarya2004@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>91+........</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/Aishwarya2004Github"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://leetcode.com/u/Aishwarya_2004leetcode"><i class="fa-solid fa-code"></i></a>
+                        <a href="https://www.linkedin.com/in/aishwarya-rana-329a64275/"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="images/Aishwarya Rana Official 2.pdf" download class="btn btn2">Download cv</a>
+                </div>
+                <div class="contact-right">
+                    <form>
+                        <input type="text" id="name" name="Name" placeholder="your name"  autocomplete="off"required>
+                        <input type="email" id="email"name="email" placeholder="your email" autocomplete="off" required>
+                        <textarea name="message"id="message" rows="6" placeholder="your message" autocomplete="off"></textarea>
+                        <button type="submit" class="btn btn2">submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p> copyright 	&#169; Aishwarya Rana<i class="fas fa-heart"></i> Portfolio</p>
+    </div>
+    
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+    
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+   var sidemenu=document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right="0";
+    }
+    function closemenu(){
+        sidemenu.style.right="-200px";
+    }
+    </script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.innerWidth > 768) {
+            ScrollReveal({
+                distance: '80px',
+                duration: 1000, // Adjusted duration to 1000 milliseconds (1 second)
+                delay: 100,
+            });
+
+            ScrollReveal().reveal('.header-text, .heading');
+            ScrollReveal().reveal('.about-col-1, .portfolio, .work, .section, .section-title, .achievement, .col-md-6, .skills, .TechnicalSkills, .card, .percent, .language, .certificate');
+
+            ScrollReveal().reveal('.tagline');
+        }
+    });
+</script>
+
+  
+  
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script>
+    var typed=new Typed('#element',{
+        strings:['Java (DSA)','Full Stack Web Developer (MERN)', 'EX-Intern at Sems Welfare Foundation' ],
+typespeed:50,
+    });
+
+</script>
+<script src="app.js"></script>
+
+
+
+</body>
+</html>
