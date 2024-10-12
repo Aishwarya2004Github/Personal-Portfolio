@@ -1,26 +1,25 @@
 const express = require('express');
-const mysql = require('mysql2');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const path = require('path'); // Import the 'path' module
+const path = require('path');
+require('dotenv').config(); // Load environment variables
 
 const app = express();
 
-// Create a connection to the MySQL database
-const db = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'Data@BaseRana',
-  database: 'details',
+// Connect to MongoDB Atlas
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
+
+// Define the message schema
+const messageSchema = new mongoose.Schema({
+  Name: String,
+  email: String,
+  message: String
 });
 
-// Connect to the MySQL database
-db.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL database:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
-});
+// Create a model for the messages
+const Message = mongoose.model('Message', messageSchema);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -34,19 +33,18 @@ app.get('/', (req, res) => {
 app.post('/details', (req, res, next) => {
   const { Name, email, message } = req.body;
 
-  const sql = `INSERT INTO messages (Name, email, message) VALUES (?, ?, ?)`;
+  // Create a new message instance
+  const newMessage = new Message({ Name, email, message });
 
-  const values = [Name, email, message];
-
-  // Execute the SQL query
-  db.query(sql, values, (err, result) => {
+  // Save the message to the database
+  newMessage.save((err) => {
     if (err) {
-      console.error('Error inserting data into the database:', err);
+      console.error('Error saving data to the database:', err);
       next(err);
       return;
     }
 
-    console.log('Data inserted into the database:', result);
+    console.log('Data saved to the database:', newMessage);
     res.send(`
       <!DOCTYPE html>
       <html lang="en">
@@ -57,28 +55,24 @@ app.post('/details', (req, res, next) => {
           <style>
             body {
               font-family: Arial, sans-serif;
-              background-color: black; /* Changed background color to black */
+              background-color: black;
               text-align: center;
               margin: 20% auto;
               max-width: 600px;
               padding: 20px;
               border-radius: 10px;
-              box-shadow: 0 0 10px #04fc43; /* Changed box shadow color to #41aefa */
+              box-shadow: 0 0 10px #04fc43;
             }
-            
             h1 {
               color: #d13639;
             }
-            
             p {
-              color: #ff04f; /* Changed color to pink */
+              color: #ff04f;
             }
-            
             a {
               color: #3498db;
               text-decoration: none;
             }
-            
             a:hover {
               text-decoration: underline;
             }
@@ -86,10 +80,8 @@ app.post('/details', (req, res, next) => {
       </head>
       <body>
           <h1>Form Submitted Successfully</h1>
-          <p>Your form has been submitted successfully </p>
-          <p>
-              <a href="/">Go back to the form</a>
-          </p>
+          <p>Your form has been submitted successfully.</p>
+          <p><a href="/">Go back to the form</a></p>
       </body>
       </html>
     `);
@@ -97,8 +89,8 @@ app.post('/details', (req, res, next) => {
 });
 
 // Serve static files
-app.use(express.static('public')); // Serve static files from the 'public' directory
-app.use('/images', express.static(path.join(__dirname, 'images'))); // Serve static files from the 'images' directory
+app.use(express.static('public'));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Error-handling middleware
 app.use((err, req, res, next) => {
